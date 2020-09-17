@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>在线计算器</title>
+	<style>
+		h1{
+			color: #292D68;
+			font-family: 微软雅黑;
+			font-size: 40px;/*大小*/
+			text-align: center;
+			margin-top: 90px;
+			display:block;
+		}
+		.box{
+			background: #514E90;
+			width: 285px;
+			height: 270px;
+			border-radius: 20px;
+			margin: 90px auto 20px auto;
+			box-shadow: 4px 4px #2D2749 ;
+			padding: 50px 0px 50px 40px ;
+			color: #8A8294;
+				
+			
+		}
+		.btn{
+			width: 45px;
+			height: 45px;
+			border-radius: 50%;/*圆角*/
+			outline: none;/*轮廓*/
+			border: none;/*边框*/
+			margin: 5px;
+			box-shadow: 0px 5px 0px 0px #8A8294;
+			color:#2F334E;
+		}
+		.display{
+			width: 170px;
+			height: 40px;
+			border-radius: 20px;/*圆角*/
+			outline: none;/*轮廓*/
+			border: none;/*边框*/
+			color: #53A2C8;
+		}
+		.btn:active{
+			transform: translateY(2px);
+			box-shadow: 0px 2px  #8A8294;
+		}
+		#display{
+			width: 170px;
+			height: 40px;
+			border-radius: 20px;/*圆角*/
+			outline: none;/*轮廓*/
+			border: none;/*边框*/
+			
+			
+		}
+		.other{
+			background: #C77212;
+			box-shadow: 0px 5px #BC4C00;
+		
+			
+		}
+		.number{
+			background:#9A9A9A;
+			box-shadow: 0px 5px #4A4A4A;
+			
+			
+		}
+		.sg{
+			background: #D0D0D0;
+			width: 400px;
+			height: 50px;border-radius: 20px;
+			margin: 10px auto 20px auto;
+			box-shadow: 0px 0px 0px 5px #EBEBEB;
+			
+		}
+		#sg1{
+			background: #D0D0D0;
+			width: 400px;
+			height: 50px;border-radius: 20px;
+			margin: 0px auto 20px auto;
+			outline: none;/*轮廓*/
+			border: none;/*边框*/
+		}
+	</style>
+</head>
+
+<body>
+	<h1>计算器</h1>
+	<div class="box">
+		<input type="button" value="C" class="btn other" onClick="clearValue()">
+		<input type="text" id="display">
+		<input type="button" value="1" class="btn number" onClick="getValue(1)">
+		<input type="button" value="2" class="btn number" onClick="getValue(2)">
+		<input type="button" value="3" class="btn number" onClick="getValue(3)">
+		<input type="button" value="+" class="btn" onClick="getValue('+')">
+		<input type="button" value="4" class="btn number" onClick="getValue(4)">
+		<input type="button" value="5" class="btn number" onClick="getValue(5)">
+		<input type="button" value="6" class="btn number" onClick="getValue(6)">
+		<input type="button" value="*" class="btn" onClick="getValue('*')">
+		<input type="button" value="7" class="btn number" onClick="getValue(7)">
+		<input type="button" value="8" class="btn number" onClick="getValue(8)">
+		<input type="button" value="9" class="btn number" onClick="getValue(9)">
+		<input type="button" value="-" class="btn" onClick="getValue('-')">
+		<input type="button" value="." class="btn" onClick="getValue('.')">
+		<input type="button" value="0" class="btn number" onClick="getValue(0)">
+		<input type="button" value="/" class="btn" onClick="getValue('/')">
+		<input type="button" value="=" class="btn other" onClick="calculate()">
+		
+	
+	</div>
+	<div class="sg">
+	<input type="text" id="sg1"></div>
+</body>
+	<script>
+		var display=
+				document.getElementById("display");/*获取文本框元素*/
+		var sg1=
+			    document.getElementById("sg1");
+		
+	    function getValue(value){
+			
+			display.value=display.value+value;
+			sg1.value=sg1.value+value;
+			}
+		
+		function calculate(){
+			display.value=eval(display.value);/*eval只能做运算，字符会干扰运算*/
+			sg1.value=sg1.value+"="+display.value+" ";
+			}
+		function clearValue(){
+			display.value="";
+		}
+		
+	
+	</script>
+	
+</html>
