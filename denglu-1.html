@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录</title>
+</head>
+	<style>
+		*/*所有样式最高级选择器*/{
+			margin: 0px;
+			padding:0px;
+			background: #E9E9E9;
+			
+		}
+		.line{
+			height: 5px;
+			background: #FFDF3D;
+		}
+		h1{
+			color: #676767;
+			font-family: 微软雅黑;
+			margin-top: 20px;
+		}
+		form{
+			background: #FFFFFF;
+			border:solid 1px #D0D0D0;
+			width: 300px;
+			margin:30px auto;
+			padding:20px 0;
+			
+		}
+		input{
+			width: 250px;
+			height: 30px;
+			outline: none;/*轮廓*/
+			border: solid 1px #D0D0D0;
+			border-radius: 10px;
+			background: #fff;
+			margin:10px 0px;
+			font-family: 微软雅黑;
+			font-size: 16px;
+			padding-left: 10px;
+		}
+		.btn{
+			background: #FFDF3D;
+			width: 87%;
+			color: #FFFFFF;
+			cursor: pointer;
+		}
+		.btn:hover{
+			background: #F9FF46;
+		}
+		.content{
+			text-align: center;
+			margin-top: 50px;
+			
+		}
+		#remind_u,#remind_p{
+			color: #FF1E1E;
+			background: #FFFFFF;
+			text-align: left;
+			padding-left: 26px;
+			font-family: 微软雅黑;
+			font-size: 10px;
+		}
+		a{
+			text-decoration: none;
+			color: #005CFF;
+			font-family: 微软雅黑;
+			
+		}
+		#sg2{
+			color: #4D4D4D;
+		}
+	</style>
+
+<body>
+	<div class= "line"></div>
+	<div class="content">
+		<img src="images.x/logo.jpg" width="100px">
+		<h1>登录</h1>
+		<form onSubmit="return submitText()" action="dengluchenggong-1.html">
+			<input type="text" placeholder="请输入用户名" id="username" onBlur="verify_username()" onFocus="input_username()">
+			<p id="remind_u"></p>
+			<input type="text" placeholder="请输入密码" id="password" onBlur="verify_password()" onFocus="input_password()">
+			<p id="remind_p"></p>
+			<input type="submit" value="登录" class="btn"> 
+		</form>
+		<p id="sg2">没有帐户？</p>
+		<a href="zhuce-1.html">注册</a>
+	</div>
+	
+</body>
+	<script>
+		var username = document.getElementById("username");
+		var password = document.getElementById("password");
+		var remind_u = document.getElementById("remind_u");
+		var remind_p = document.getElementById("remind_p");
+		function verify_username(){
+			if(username.value == ""){
+				remind_u.innerHTML = "请输入用户名！";
+			}else{
+				remind_u.innerHTML = "";
+			}
+		}
+		function verify_password(){
+			if(password.value == ""){
+				remind_p.innerHTML = "请输入密码！";
+			}else{
+				remind_p.innerHTML = "";
+			}
+		}
+		function input_username(){
+			remind_u.innerHTML="";
+		}
+		function input_password(){
+			remind_p.innerHTML="";
+		}
+		function submitText(){
+			if(username.value==""&& password.value==""){
+				remind_u.innerHTML = "请输入用户名！";
+				remind_p.innerHTML = "请输入密码！";
+				return false;
+			}else if(username.value!=""&& password.value==""){
+				remind_u.innerHTML = "";
+				remind_p.innerHTML = "请输入密码！";
+				return false;
+			}else if(username.value==""&& password.value!=""){
+				remind_u.innerHTML = "请输入用户名！";
+				remind_p.innerHTML = "";
+				return false;
+			}else if(username.value=="xjy"&& password.value=="123456"){
+				return true;
+			}else{
+				alert("用户名或密码错误！");
+				return false;
+			}
+			
+		}
+	</script>
+	
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册</title>
+</head>
+	<style>
+		*{
+			margin: 0px;
+			padding:0px;
+			background: #E9E9E9;	
+		}
+		.line{
+			height: 5px;
+			background: #FFDF3D;
+		}
+		h1{
+			color: #676767;
+			font-family: 微软雅黑;
+			margin-top: 20px ;
+			text-align: center;
+		}
+		.content{
+			text-align: center;
+			margin-top: 50px;
+			}
+		a{
+			text-decoration: none;
+			color: #005CFF;
+			font-family: 微软雅黑;
+			
+		}
+		form{
+			background: #FFFFFF;
+			border:solid 1px #D0D0D0;
+			width: 570px;
+			margin:30px auto;
+			padding:20px ;
+			
+		}
+		input{
+			width: 150px;
+			height: 30px;
+			outline: none;/*轮廓*/
+			border: solid 1px #D0D0D0;
+			border-radius: 10px;
+			background: #fff;
+			margin:10px;
+			font-family: 微软雅黑;
+			font-size: 16px;
+			padding-left: 5px;
+		}
+		.btn{
+			background: #FFDF3D;
+			width: 77%;
+			color: #FFFFFF;
+			cursor: pointer;}
+		span{
+			color: #09BF5C;
+			background: #FFFFFF;
+			text-align: left;
+			padding-left: 26px;
+			font-family: 微软雅黑;
+			font-size: 10px;
+			display: inline-block;
+			width:250px;
+		}
+	</style>
+
+<body>
+	<div class= "line"></div>
+	<div class="content">
+		<img src="images.x/logo.jpg" width="100px">
+		<h1>注册</h1>
+		<form onSubmit="return submitText()" action="denglu-1.html">
+			
+			用户名：<input type="text" placeholder="请输入用户名" id="un" onBlur="verify_un()" onFocus="input_un()"><span id="yhm"></span><br>
+			密码：<input type="text" placeholder="请输入密码" id="pw" onBlur="verify_pw()" onFocus="input_pw()"><span id="mm" ></span><br>
+			确认密码：<input type="text" placeholder="请确认密码" id="cpw" onBlur="verify_cpw()" onFocus="input_cpw()"><span id="qrmm" ></span><br>
+			电子邮箱：<input type="text" placeholder="请输入邮箱地址" id="em" onBlur="verify_em()" onFocus="input_em()"><span id="yx"></span>
+			<input type="submit" value="创建账户" class="btn"> 
+		</form>
+		<p id="sg2">已有帐户？</p>
+		<a href="denglu-1.html">登录</a>
+		</div>
+</body>
+	<script>
+		var un=document.getElementById("un");
+		var pw=document.getElementById("pw"); 
+		var cpw=document.getElementById("cpw");
+		var em=document.getElementById("em"); 
+		var yhm=document.getElementById("yhm"); 
+		var mm=document.getElementById("mm"); 
+		var qrmm=document.getElementById("qrmm"); 
+		var yx=document.getElementById("yx");
+		var a= /\w[a-zA-Z0-9_]*/;
+		var b= /^.*(?=.*[A-Z])(?=.*[a-z]).*$/;
+		var c= /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		 function verify_un(){
+			 if(un.value==""){
+				 yhm.innerHTML="请输入用户名！";
+			      yhm.style.color="red";
+			 }else if(!un.value.match(a)){
+				 yhm.innerHTML="只能够输入英文，数字和下划线";
+				 yhm.style.color="red";
+			 }else if(un.value.length<6||un.value.length>10){
+				 yhm.innerHTML="只能够输入6-10位字符";
+				 yhm.style.color="red";
+			 }else {
+				 yhm.innerHTML="√";
+				 yhm.style.color="#09BF5C";
+			 }
+		 }
+		 function verify_pw(){
+			 if(pw.value==""){
+				 mm.innerHTML="请输入密码！";
+				 mm.style.color="red";
+			 }else if(!pw.value.match(b)){
+				 mm.innerHTML="密码需要同时包含大小写字母";
+				 mm.style.color="red";
+			 }else if(pw.value.length<6||un.value.length>16){
+				 mm.innerHTML="只能够输入6-16位字符";
+				mm.style.color="red";
+			 }else {
+				 mm.innerHTML="√";
+				 mm.style.color="#09BF5C";
+			 }
+		 }
+		 function verify_cpw(){
+			 if(cpw.value==""){
+				 qrmm.innerHTML="请确认密码！";
+				 qrmm.style.color="red";
+			 }else if(cpw.value!=pw.value){
+				 qrmm.innerHTML="密码不一致，请重新输入"
+				 qrmm.style.color="red";
+			 }else{
+				 qrmm.innerHTML="√";
+				qrmm.style.color="#09BF5C";
+			 }
+		 }
+		 function verify_em(){
+			 if(em.value==""){
+				 yx.innerHTML="请输入邮箱地址！";
+				 yx.style.color="red";
+			 }else if(!em.value.match(c)){
+				 yx.innerHTML="请输入正确邮箱地址";
+				 yx.style.color="red";
+			 }else {
+				 yx.innerHTML="√";
+				 yx.style.color="green";
+		 }}
+		 function input_un(){
+			 yhm.innerHTML="6-10个字符，可使用数字，字母，下划线";
+			  yhm.style.color="green";
+		 }
+		 function input_pw(){
+			 mm.innerHTML="6-16个字符，区分大小写";
+			  mm.style.color="green";
+		 }
+		 function input_cpw(){
+			 qrmm.innerHTML="请确认密码";
+			  qrmm.style.color="green";
+		 }
+		 function input_em(){
+			 yx.innerHTML="请输入正确的邮箱地址";
+			  yx.style.color="green";
+		 }
+		function submitText(){
+			if(un.value.match(a)&&pw.value.match(b)&&pw.value.length>6||un.value.length<16&&cpw.value==pw.value&&em.value.match(c)){
+				return true;
+			}else {
+				return false;
+			}
+		}
+	</script>
+</html>
