@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	body{
+		text-align:center;
+		background-color:grey;
+	}
+	.set{
+		width:30px;
+		height:30px;
+	}
+	.input1{
+		width:500px;
+		height:25px;
+	}
+	.input2{
+		width:100px;
+		height:25px;
+	}
+	.select{
+		width:5%;
+		height:29px;
+	}
+	.send{
+		width:5%;
+		height:29px;
+	}
+	#dm{
+		height:645px;
+		width:1200px;
+		position:absolute;
+		left:190px;
+		top:0px;
+	}
+	marquee{
+		position: absolute;
+		left: 0px;
+	}
+</style>
+</head>
+
+<body>
+<video width="1200" height="675" controls="controls">
+	<source src="video.mp4"	type="video/mp4" />
+	<source src="video.ogg" type="video/ogg" />
+	<source src="video.webm" type="video/webm" />
+	<object data="video.mp4" width="1200" height="675">
+		<embed src="video.swf" width="1200" height="675" />
+	</object>
+</video>
+<div id="dm"></div>
+<br />
+	<input id="input1" class="input1" type="text" placeholder="请输入要发送的内容">
+	<select id="select" class="select">
+		<option value="black" selected="selected">黑色</option>
+		<option value="white">白色</option>
+		<option value="red">红色</option>
+		<option value="orange">橙色</option>
+		<option value="yellow">黄色</option>
+		<option value="green">绿色</option>
+		<option value="blue">蓝色</option>
+		<option value="purple">紫色</option>
+	</select>
+	<input id="input3" class="input2" type="text" placeholder="请输入字体大小">
+	<button class="send" onClick="send()">发送</button>
+<script>
+	var k=0;
+function send()
+{
+	var valuet1=document.getElementById("input1").value;
+	var valuet3=document.getElementById("input3").value;
+	if(valuet3=="") valuet3=10;
+	var location=document.getElementById("select");
+	var select=location.options[location.selectedIndex].value;
+	var create=document.createElement("marquee");
+	create.innerHTML=valuet1;
+	create.loop=1;
+	create.style.color=select;
+	create.style.fontSize=valuet3+"px";
+	valuet3=parseInt(valuet3);
+	if(k+valuet3>645) k=0;
+	create.style.top=k+"px";
+	k+=valuet3;
+	var append=document.getElementById("dm");
+	append.appendChild(create);
+	window.setTimeout(function(){append.removeChild(create);k-=valuet3},300000);
+}
+</script>
+</body>
+</html>
